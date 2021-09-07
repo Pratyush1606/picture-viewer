@@ -1,0 +1,46 @@
+{% load rest_framework %}
+
+<html lang="en">
+    <head>
+        <title>Add Image</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    
+    <body>
+        <h1 class="text-center">Add Image</h1>
+        <div class="container" style="width:50%; background-color: rgba(127, 143, 185, 0.842);">
+            <form action="{% url 'pic_app:imageList' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+          
+                <div class="form-group">
+                  <label for="ImgName">Image Name</label>
+                  <input type="text" class="form-control" id="ImgName" name="ImgName" placeholder="Image Name" required>
+                </div>
+          
+                <div class="form-group">
+                  <label for="ImgURL">Image URL</label>
+                  <input type="url" class="form-control" id="ImgURL" name="ImgURL" value="" placeholder="Image URL" required>
+                </div>
+          
+                <div class="form-group">
+                  <label for="ImgDetails">Image Details</label>
+                  <input type="text" class="form-control" id="ImgDetails" name="ImgDetails" value="" placeholder="Image Details" required>
+                </div>
+          
+                <div>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
+            </form>
+        </div>
+        <br>
+        <div class="text-center">
+            <a class="btn btn-primary" href="{% url 'pic_app:imageList' %}">See all images :)</a>
+        </div>
+
+    </body>
+</html>
