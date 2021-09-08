@@ -1,0 +1,1 @@
+web: gunicorn picture_viewer.wsgi --log-file -
