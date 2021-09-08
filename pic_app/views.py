@@ -12,19 +12,18 @@ from pic_app.pagination import CustomPagination, MyPaginationMixin
 
 class imageList(APIView, MyPaginationMixin):
 
-    #pagination_class = CustomPagination
+    pagination_class = CustomPagination
     renderer_classes = [TemplateHTMLRenderer]
 
     def get(self, request):
         images = Image.objects.all()
-        # page = self.paginate_queryset(images)
-        # if page is not None:
-        #     serializers = ImageSerializer(page, many=True)
-        #     print(type(self.get_paginated_response(serializers.data)))
-        #     return self.get_paginated_response(serializers.data)
-        
+        page = self.paginate_queryset(images)
+        if page is not None:
+            serializers = ImageSerializer(page, many=True)
+            ans =  self.get_paginated_response(serializers.data)
+            
         serializers = ImageSerializer(images, many=True)
-        return Response({"images": serializers.data}, template_name="image_list.html", status=status.HTTP_200_OK)
+        return Response(ans.data, template_name="image_list.html", status=status.HTTP_200_OK)
     
     def post(self, request):
         data = {

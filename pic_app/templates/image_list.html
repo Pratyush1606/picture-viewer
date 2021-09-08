@@ -63,20 +63,34 @@
         </div>
         
         <div class="text-center">
-        <div class="row row-cols-1 row-cols-md-3 g-4 m-5 pb-5">
-            {% for image in images %}
-            <div class="col">
-                <div class="card" style="max-width: 18rem;">
-                    <a href="{% url 'pic_app:imageDetail' image.id %}">
-                        <img
-                            src="{{image.ImgURL}}"
-                            class="card-img-top"
-                        />
-                    </a>
+            <div class="row row-cols-1 row-cols-md-3 g-4 m-5 pb-5">
+                {% for image in results %}
+                <div class="col">
+                    <div class="card" style="max-width: 18rem;">
+                        <a href="{% url 'pic_app:imageDetail' image.id %}">
+                            <img
+                                src="{{image.ImgURL}}"
+                                class="card-img-top"
+                            />
+                        </a>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
-        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center pagination-lg">
+                {% if previous %}
+                    <li class="page-item">
+                        <a class="page-link" href={{previous}} tabindex="-1">Previous</a>
+                    </li>
+                {% endif %}
+                {% if next %}
+                    <li class="page-item">
+                        <a class="page-link" href={{next}} tabindex="-1">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
     </body>
 </html>
