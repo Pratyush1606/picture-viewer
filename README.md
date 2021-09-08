@@ -1,6 +1,6 @@
 # PICTURE VIEWER
 
-**picture-viewer** is a FullStack application which continuously which lists and shows all Pictures added to the database in a paginated response. It provides all the CRUD functionalities for the pictures. It also provides feature to search Pictures by names.
+**picture-viewer** is a FullStack application that continuously lists and shows all Pictures added to the database in a paginated response. It provides all the CRUD functionalities for the pictures. It also provides feature to search Pictures by names.
 
 ---
 
