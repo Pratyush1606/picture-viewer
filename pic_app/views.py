@@ -16,15 +16,25 @@ class imageList(APIView, MyPaginationMixin):
     renderer_classes = [TemplateHTMLRenderer]
 
     def get(self, request):
-        images = Image.objects.all()
-        page = self.paginate_queryset(images)
-        if page is not None:
-            serializers = ImageSerializer(page, many=True)
-            ans =  self.get_paginated_response(serializers.data)
+        query = request.GET.get("query", None)
+        if(not query):
+            images = Image.objects.all()
+            page = self.paginate_queryset(images)
+            if page is not None:
+                serializers = ImageSerializer(page, many=True)
+                image_response = self.get_paginated_response(serializers.data)
             
+            return Response(image_response.data, template_name="image_list.html", status=status.HTTP_200_OK)
+        
+        # Sending a list of images whose name match with the query
+        images = Image.objects.filter(ImgName=query)
         serializers = ImageSerializer(images, many=True)
-        return Response(ans.data, template_name="image_list.html", status=status.HTTP_200_OK)
-    
+        data = {
+            "results": serializers.data,
+            "query": query
+        }
+        return Response(data, template_name="image_list.html", status=status.HTTP_200_OK)
+        
     def post(self, request):
         data = {
             "ImgName": request.data.get("ImgName"),

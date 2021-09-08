@@ -61,7 +61,15 @@
         <div class="text-center">
             <a class="btn btn-primary" href="{% url 'pic_app:imageAdd' %}">Want to add a new Image :)</a>
         </div>
-        
+        <br>
+        {% if query %}
+            <div class="text-center">
+                <a class="btn btn-primary" href="{% url 'pic_app:imageList' %}">See all Images :)</a>
+            </div>
+            <br>
+            <h2 class="text-center">Search Results for query={{query}}</h2>            
+        {% endif %}
+
         <div class="text-center">
             <div class="row row-cols-1 row-cols-md-3 g-4 m-5 pb-5">
                 {% for image in results %}
