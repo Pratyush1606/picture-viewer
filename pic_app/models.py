@@ -6,3 +6,6 @@ class Image(models.Model):
     ImgName = models.CharField(max_length=100)
     ImgURL = models.URLField()
     ImgDetails = models.TextField(max_length=500)
+
+    class Meta:
+        ordering = ('-id',)
