@@ -219,6 +219,12 @@ picture-viewer
     python manage.py runserver
     ```
 
+* Run tests
+
+  ```sh
+  python manage.py test
+  ```
+
 ---
 
 ## **Customizations**
