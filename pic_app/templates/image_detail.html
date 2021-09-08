@@ -88,7 +88,7 @@
                     <a href="{% url 'pic_app:imageEdit' image.id %}">
                         <input class="btn btn-primary" id="editBtn" type="button" value="Edit">
                     </a>
-                    <input class="btn btn-primary" id="delBtn" onclick="return deleteImage({{image.id}})" type="button" value="Delete">
+                    <input class="btn btn-danger" id="delBtn" onclick="return deleteImage({{image.id}})" type="button" value="Delete">
                 </div>
             </div>
         </div>
